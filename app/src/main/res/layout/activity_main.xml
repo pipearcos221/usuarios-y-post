@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
-        android:id="@+id/content"
+    <data>
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        tools:ignore="UselessParent">
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayoutSearch"
+        <RelativeLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/editTextSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/edit_text_search"
-                android:inputType="textPersonName"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewSearchResults"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/textInputLayoutSearch"/>
+            tools:ignore="UselessParent">
 
-    </RelativeLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-</LinearLayout>
+                <EditText
+                    android:id="@+id/editTextSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_search"
+                    android:inputType="textPersonName" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewSearchResults"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/textInputLayoutSearch"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                tools:listitem="@layout/user_list_item"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>
