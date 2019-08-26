@@ -5,6 +5,7 @@ import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
 import co.com.ceiba.mobile.pruebadeingreso.data.model.User
 import io.reactivex.Flowable
+import io.reactivex.Observable
 
 @Dao
 interface UserDao {

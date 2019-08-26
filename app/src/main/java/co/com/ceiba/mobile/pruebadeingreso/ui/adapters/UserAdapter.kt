@@ -8,8 +8,12 @@ import co.com.ceiba.mobile.pruebadeingreso.R
 import co.com.ceiba.mobile.pruebadeingreso.data.model.User
 import co.com.ceiba.mobile.pruebadeingreso.databinding.UserListItemBinding
 import co.com.ceiba.mobile.pruebadeingreso.util.inflate
+import io.reactivex.subjects.PublishSubject
 
-class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+
+class UserAdapter : RecyclerView.Adapter<UserAdapter.UserHolder>(){
+
+    val clickUserSubject: PublishSubject<User> = PublishSubject.create()
 
     var users: List<User> = emptyList()
     set(value) {
@@ -17,27 +21,20 @@ class UserAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-            when (viewType) {
-                0 -> UserHolder(parent.inflate(R.layout.user_list_item))
-                else -> EmptyViewHolder(parent.inflate(R.layout.empty_view))
-            }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserHolder =
+            UserHolder(parent.inflate(R.layout.user_list_item))
+
 
     override fun getItemCount(): Int = users.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
-            when (holder) {
-                is UserHolder -> holder.bind(users[position])
-                else -> Unit
-            }
-
+    override fun onBindViewHolder(holder: UserHolder, position: Int) =
+            holder.bind(users[position], clickUserSubject)
 
     class UserHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val binding: UserListItemBinding = DataBindingUtil.bind(itemView)!!
-        fun bind(item: User) = binding.run {
+        fun bind(item: User, clickSubjet: PublishSubject<User>) = binding.run {
             user = item
+            onCLick = clickSubjet
         }
     }
-
-    class EmptyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

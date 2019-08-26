@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="user"
+            type="co.com.ceiba.mobile.pruebadeingreso.data.model.User" />
     </data>
 
     <LinearLayout
@@ -38,7 +41,8 @@
                     style="@style/TextAppearance.AppCompat.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jhon doe"
+                    android:text='@{user.name}'
+                    tools:text="Joe Smith"
                     android:textColor="@color/colorPrimary"
                     />
 
@@ -63,7 +67,9 @@
                         style="@style/TextAppearance.AppCompat.Body1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="1-770-736-8031 x56442" />
+                        android:text='@{user.phone}'
+                        tools:text="1-770-736-8031 x56442"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -85,7 +91,8 @@
                         style="@style/TextAppearance.AppCompat.Body1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="jhondoe@email.com" />
+                        android:text='@{user.email}'
+                        tools:text="jhondoe@email.com" />
                 </LinearLayout>
 
 
